@@ -1,0 +1,60 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Django specific
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media
+
+# Environment
+.env
+venv/
+ENV/
+env/
+venv.bak/
+
+# VS Code
+.vscode/
+
+# MacOS system files
+.DS_Store
+
+# Byte-compiled
+__pycache__/
+
+# Static files (generated)
+staticfiles/
+static/
+build/
+
+# Pytest
+.pytest_cache/
+
+# Migrations cache
+*/migrations/__pycache__/
+
+# mypy
+.mypy_cache/
+
+# coverage
+htmlcov/
+.coverage
+*.cover
+*.py,cover
+
+
+# IDE files
+.idea/
+https:/
+.manage.py 
+homeproject/asgi.py 
+homeproject/wsgi.py 
+
+homeapp/tests.py
+homeapp/admin.py
