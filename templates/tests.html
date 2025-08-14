@@ -843,12 +843,13 @@
     <section class="newsletter">
         <h3>Interested in Our Products?</h3>
         <p>Contact us for more information and availability</p>
-        <form class="newsletter-form">
+        <form class="newsletter-form" method="POST" action="{% url 'subscribe' %}">
+            {% csrf_token %}
             <input type="email" name="email" placeholder="Enter your email" required>
             <button type="submit">Get Updates</button>
         </form>
     </section>
-
+    
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -858,10 +859,10 @@
                     <p>Your trusted partner for premium electronics and IT solutions in Lagos</p>
                     <br>
                     <div class="social-links">
-                        <a href="https://mail.google.com/mail/u/0/#inbox"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://API.whatsapp.com/send?phone=2347062022269"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
 
@@ -879,7 +880,7 @@
                 <div class="footer-column">
                     <h4>Contact Us</h4>
                     <ul>
-                        <li class="d-flex"><i class="fas fa-map-marker-alt me-3 mt-1"></i> 311 Junction, 31 Road Festac Town , Lagos.</li>
+                        <li class="d-flex"><i class="fas fa-map-marker-alt me-3 mt-1"></i> 311 Junction, 31 Road Festac Town, Lagos.</li>
                         <li class="d-flex"><i class="fas fa-phone me-3 mt-1"></i>+234 706 202 2269 +234 803 551 3371</li>
                         <li class="d-flex"><i class="fas fa-envelope me-3 mt-1"></i> diskolynconceptslimited@gmail.com</li>
                         <li class="d-flex"><i class="fas fa-clock me-3 mt-1"></i> Mon-Fri: 9AM - 6PM, Sat: 10AM - 4PM</li>
@@ -887,7 +888,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p><em>Developed by:</em> <a href="https://osuinde-favour.vercel.app/">RMD Developers</a></p>
+                <p><em>Developed by:</em> <a href="">RMD Developers</a></p>
             </div>
         </div>
     </footer>
@@ -913,46 +914,6 @@
             });
         });
 
-        // Newsletter Form Submission
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input').value;
-
-            // Send the email to Django backend
-            fetch("{% url 'subscribe' %}", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRFToken": getCookie("csrftoken") // Needed for Django
-                },
-                body: JSON.stringify({ email: email })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-                this.reset();
-            })
-            .catch(error => console.error("Error:", error));
-        });
-
-        // Helper to get CSRF token for Django
-        function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== "") {
-                const cookies = document.cookie.split(";");
-                for (let cookie of cookies) {
-                    cookie = cookie.trim();
-                    if (cookie.substring(0, name.length + 1) === (name + "=")) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-
-
-        // Smooth Scrolling for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -962,7 +923,6 @@
             });
         });
 
-        // Sticky header effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
