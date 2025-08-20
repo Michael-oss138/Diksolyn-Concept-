@@ -30,7 +30,6 @@ __pycache__/
 
 # Static files (generated)
 staticfiles/
-static/
 build/
 
 # Pytest
