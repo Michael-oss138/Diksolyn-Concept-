@@ -1,0 +1,11 @@
+Install Python using the python original site https://www.python.org/downloads/
+
+Install send_mail using pip for sending mails
+pip3 install send_mail for macos
+pip install send_mail for windows
+
+start your server; 
+python3 manage.py runserver for macos
+python manage.py runserver for windows
+
+Thanks....
